@@ -13,7 +13,7 @@ jobs:
       TAG: ${{ github.repository }}
       REGISTRY: ghcr.io
       TOK: ${{ secrets.GITHUB_TOKEN }}
-      USER: Rekaad
+      USER: ${{ github.repository_owner }}
       VERSION: "v1.0.0"
       ARCHIVE: oci.tar
 
