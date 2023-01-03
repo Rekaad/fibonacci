@@ -15,6 +15,7 @@ jobs:
       TOK: ${{ secrets.GITHUB_TOKEN }}
       USER: Rekaad
       VERSION: "v1.0.0"
+      ARCHIVE: oci.tar
 
     steps:
 
@@ -54,5 +55,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           platforms: linux/amd64,linux/arm64
-          push: true
+          outputs: type=oci,dest=${{ env.ARCHIVE }}
+          cache-from: type=registry,ref=${{ env.TAG }}:buildcache
+          cache-to: type=registry,ref=${{ env.TAG }}:buildcache,mode=max
 
