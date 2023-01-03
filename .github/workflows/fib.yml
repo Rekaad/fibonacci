@@ -14,8 +14,8 @@ jobs:
       REGISTRY: ghcr.io
       TOK: ${{ secrets.GITHUB_TOKEN }}
       USER: ${{ github.repository_owner }}
-      VERSION: "v1.0.0"
-      ARCHIVE: oci.tar
+      VERSION: v1.0.0
+      ARCHIVE: oci_archive.tar
 
     steps:
 
