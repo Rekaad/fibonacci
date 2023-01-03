@@ -10,7 +10,7 @@ jobs:
     name: Budowa i publikacja obrazów na repozytorium
     runs-on: ubuntu-20.04
     env:
-      TAG: ${{ github.repository }}
+      TAG: fibonacci
       REGISTRY: ghcr.io
       TOK: ${{ secrets.GITHUB_TOKEN }}
       USER: ${{ github.repository_owner }}
@@ -45,7 +45,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4.1.1
         with:
-          images: ${{ env.REGISTRY }}/${{ env.TAG }}
+          images: ${{ env.REGISTRY }}/${{ env.USER }}/${{ env.TAG }}
           tags: type=semver,pattern={{version}},value=${{ env.VERSION }}
 
       - name: Build and push
