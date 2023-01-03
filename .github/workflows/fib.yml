@@ -41,7 +41,7 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
-      - name: Extract Docker metadata
+      - name: Docker Metadata action
         id: meta
         uses: docker/metadata-action@v4.1.1
         with:
