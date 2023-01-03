@@ -57,7 +57,7 @@ jobs:
           platforms: linux/amd64,linux/arm64
           outputs: type=oci,dest=${{ env.ARCHIVE }}
           cache-from: type=registry,ref=${{ env.TAG }}:buildcache
-          cache-to: type=registry,ref=reekad/${{ env.TAG }}:buildcache,mode=max
+          cache-to: type=registry,ref=${{ env.TAG }}:buildcache,mode=max
 
       - name: Push OCI archive to remote registry
         uses: pr-mpt/actions-push-oci-archive-to-registry@v1
