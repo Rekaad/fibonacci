@@ -10,7 +10,7 @@ jobs:
     name: Budowa i publikacja obrazów na repozytorium
     runs-on: ubuntu-20.04
     env:
-      TAG: fibonacci
+      TAG: ${{ github.repository }}
       REGISTRY: ghcr.io
       TOK: ${{ secrets.GITHUB_TOKEN }}
       USER: Rekaad
@@ -58,4 +58,10 @@ jobs:
           outputs: type=oci,dest=${{ env.ARCHIVE }}
           cache-from: type=registry,ref=${{ env.TAG }}:buildcache
           cache-to: type=registry,ref=${{ env.TAG }}:buildcache,mode=max
+
+      - name: Push OCI archive to remote registry
+        uses: pr-mpt/actions-push-oci-archive-to-registry@v1
+        with:
+          archive: ${{ env.ARCHIVE }}:latest
+          tag: ${{ env.VERSION }}
 
